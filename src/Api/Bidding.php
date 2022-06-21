@@ -5,6 +5,7 @@ namespace Ebay\Buy\Offer\Api;
 use Ebay\Buy\Offer\Model\Bidding as BiddingModel;
 use Ebay\Buy\Offer\Model\PlaceProxyBidRequest;
 use Ebay\Buy\Offer\Model\PlaceProxyBidResponse;
+use OpenAPI\Runtime\UnexpectedResponse;
 
 class Bidding extends AbstractAPI
 {
@@ -30,9 +31,9 @@ class Bidding extends AbstractAPI
      *                        &nbsp;&nbsp;X-EBAY-C-MARKETPLACE-ID = EBAY_US For a list of supported sites see,
      *                        API Restrictions.
      *
-     * @return BiddingModel
+     * @return BiddingModel|UnexpectedResponse
      */
-    public function get(string $item_id, array $headers = []): BiddingModel
+    public function get(string $item_id, array $headers = [])
     {
         return $this->request(
         'getBidding',
@@ -74,9 +75,9 @@ class Bidding extends AbstractAPI
      *                                      &nbsp;&nbsp;X-EBAY-C-MARKETPLACE-ID = EBAY_US For a list of supported sites see,
      *                                      API Restrictions.
      *
-     * @return PlaceProxyBidResponse
+     * @return PlaceProxyBidResponse|UnexpectedResponse
      */
-    public function placeProxyBid(string $item_id, PlaceProxyBidRequest $Model, array $headers = []): PlaceProxyBidResponse
+    public function placeProxyBid(string $item_id, PlaceProxyBidRequest $Model, array $headers = [])
     {
         return $this->request(
         'placeProxyBid',
